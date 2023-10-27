@@ -44,8 +44,9 @@ To locate hidden files, you can use the -a (or --all) option with the ls command
 ## Level 5
 The password for the next level is stored in the only human-readable file in the inhere directory.
 file: This is the file command, a Unix/Linux utility used to determine and display information about the type of a file.
-./: This represents the current directory. In Unix-like systems, ./ is a shorthand notation for the current working directory. In this context, it tells the file command to look for the specified files in the current directory.
--file0*: This is a pattern used to match files in the current directory. The pattern -file0* indicates that you want to match files that start with -file0 and can have any characters after that. The asterisk * is a wildcard that matches any number of characters. So, this pattern matches filenames like -file01, -file02, and so on.
+- ./: This represents the current directory. In Unix-like systems, ./ is a shorthand notation for the current working directory. In this context, it tells the file command to look for the specified files in the current directory.
+- -file0*: This is a pattern used to match files in the current directory. The pattern -file0* indicates that you want to match files that start with -file0 and can have any characters after that.
+- The asterisk * is a wildcard that matches any number of characters. So, this pattern matches filenames like -file01, -file02, and so on.
 Putting it all together, the file ./-file0* command checks the file type of all files in the current directory whose names start with -file0. The file command will return information about the type of each matched file, which could be things like text, binary, image, or various other file types. This is useful when you want to quickly identify the file types in a directory, especially if you're dealing with a mix of file formats.
 
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/f6ee1a7c-76d3-4671-84ff-a1464340b9ea)
@@ -61,11 +62,11 @@ Putting it all together, the file ./-file0* command checks the file type of all 
 ## Level 6
 The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:  human-readable, 1033 bytes in size, not executable.
 find: This is the find command, a versatile utility used to search for files and directories in a specified location.
--type f: This is a test condition for find that specifies you're looking for files (not directories). The -type f option filters out directories and selects only regular files.
--readable: This is another test condition for find. It filters for files that are readable by the user running the command. In other words, it looks for files that you have read permissions on.
-!: The exclamation point ! is used to negate the following condition. In this case, it negates the -executable condition, which means it selects files that are not executable.
--executable: This is a test condition for find that checks whether a file is executable. By using ! before it, we're excluding files that are executable.
--size 1033c: This is a test condition for find that specifies the size of the files to search for. In this case, it's looking for files with a size of 1033 bytes. The c indicates that the size is measured in bytes.
+- -type f: This is a test condition for find that specifies you're looking for files (not directories). The -type f option filters out directories and selects only regular files.
+- -readable: This is another test condition for find. It filters for files that are readable by the user running the command. In other words, it looks for files that you have read permissions on.
+- !: The exclamation point ! is used to negate the following condition. In this case, it negates the -executable condition, which means it selects files that are not executable.
+- -executable: This is a test condition for find that checks whether a file is executable. By using ! before it, we're excluding files that are executable.
+- -size 1033c: This is a test condition for find that specifies the size of the files to search for. In this case, it's looking for files with a size of 1033 bytes. The c indicates that the size is measured in bytes.
 
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/672fcdd2-8ba1-4e7f-b75c-0ee8ca7cdfab)
 
@@ -75,11 +76,11 @@ find: This is the find command, a versatile utility used to search for files and
 
 The password for the next level is stored somewhere on the server and has all of the following properties:owned by user bandit7, owned by group bandit6, 33 bytes in size
 The find command is again utilized to solve this level. 
-/: This is the starting directory for the search. In this case, / represents the root directory, which means the search will begin at the root of the file system and traverse through all directories.
--type f: This is a test condition for find that specifies you're looking for files (not directories). The -type f option filters out directories and selects only regular files.
--size 33c: This is a test condition for find that specifies the size of the files to search for. In this case, it's looking for files with a size of 33 bytes. The c indicates that the size is measured in bytes.
--group bandit6: This is a test condition for find that filters files based on their group ownership. It selects files that belong to the group named "bandit6."
--user bandit7: This is another test condition for find that filters files based on their user ownership. It selects files that are owned by the user named "bandit7."
+- /: This is the starting directory for the search. In this case, / represents the root directory, which means the search will begin at the root of the file system and traverse through all directories.
+- -type f: This is a test condition for find that specifies you're looking for files (not directories). The -type f option filters out directories and selects only regular files.
+- -size 33c: This is a test condition for find that specifies the size of the files to search for. In this case, it's looking for files with a size of 33 bytes. The c indicates that the size is measured in bytes.
+- -group bandit6: This is a test condition for find that filters files based on their group ownership. It selects files that belong to the group named "bandit6."
+- -user bandit7: This is another test condition for find that filters files based on their user ownership. It selects files that are owned by the user named "bandit7."
 
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/95c6c5ad-04bf-4ae0-a9cb-284b9c7c1cea)
 
@@ -93,20 +94,20 @@ The find command is again utilized to solve this level.
 
 ## Level 8 
 The password for the next level is stored in the file data.txt next to the word millionth.
-cat data.txt: The cat command is used to concatenate and display the contents of one or more files. In this case, it is used to display the contents of a file named data.txt. data.txt is the input file for this command, and cat will display its content to the standard output (usually your terminal).
-| (pipe): The pipe symbol | is used to redirect the standard output (stdout) of the command on its left to the standard input (stdin) of the command on its right. In this case, it pipes the output of cat data.txt as input to the next command, grep.
-grep millionth: The grep command is used to search for patterns in text. In this command, it searches for the word "millionth" within the text received from cat data.txt. If "millionth" is found within the text, grep will display the lines containing that word.
+- cat data.txt: The cat command is used to concatenate and display the contents of one or more files. In this case, it is used to display the contents of a file named data.txt. data.txt is the input file for this command, and cat will display its content to the standard output (usually your terminal).
+- | (pipe): The pipe symbol | is used to redirect the standard output (stdout) of the command on its left to the standard input (stdin) of the command on its right. In this case, it pipes the output of cat - data.txt as input to the next command, grep.
+- grep millionth: The grep command is used to search for patterns in text. In this command, it searches for the word "millionth" within the text received from cat data.txt. If "millionth" is found within the text, grep will display the lines containing that word.
 
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/3baef231-67a9-4857-ab1a-a64e20d723cf)
 
  
 ## Level 9
 The password for the next level is stored in the file data.txt and is the only line of text that occurs only once.
-sort data.txt: The sort command is used to sort the lines in a text file. In this case, it's sorting the lines in the file data.txt. After execution, the lines in data.txt will be sorted in lexicographic (alphabetical) order.
-| (pipe): The pipe symbol | is used to redirect the standard output (stdout) of the command on its left to the standard input (stdin) of the command on its right. In this case, it pipes the sorted output from sort data.txt to the next command, uniq -c.
-uniq -c: The uniq command is used to filter out duplicate lines from a sorted input. The -c option is used to count the number of occurrences of each unique line. In this case, it will provide a count of how many times each line appears in the sorted data.
-| (pipe): Another pipe is used to redirect the output from uniq -c to the next command, grep "1 ".
-grep "1 ": The grep command is used to search for patterns in text. In this command, it searches for lines containing the pattern "1 " (a space after the number 1). This will match lines from the output of uniq -c where the count is exactly 1.
+- sort data.txt: The sort command is used to sort the lines in a text file. In this case, it's sorting the lines in the file data.txt. After execution, the lines in data.txt will be sorted in lexicographic (alphabetical) order.
+- | (pipe): The pipe symbol | is used to redirect the standard output (stdout) of the command on its left to the standard input (stdin) of the command on its right. In this case, it pipes the sorted output from sort data.txt to the next command, uniq -c.
+- uniq -c: The uniq command is used to filter out duplicate lines from a sorted input. The -c option is used to count the number of occurrences of each unique line. In this case, it will provide a count of how many times each line appears in the sorted data.
+- | (pipe): Another pipe is used to redirect the output from uniq -c to the next command, grep "1 ".
+- grep "1 ": The grep command is used to search for patterns in text. In this command, it searches for lines containing the pattern "1 " (a space after the number 1). This will match lines from the output of uniq -c where the count is exactly 1.
 
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/9c5c137a-4497-4f49-9766-94f7e0dff2fe)
 
@@ -115,11 +116,11 @@ grep "1 ": The grep command is used to search for patterns in text. In this comm
 
 ## Level 10
 The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-cat data.txt: The cat command is used to concatenate and display the contents of the file named data.txt. It reads the content of the file and sends it to the standard output (usually your terminal).
-| (pipe): The pipe symbol | is used to redirect the standard output (stdout) of the command on its left to the standard input (stdin) of the command on its right. In this case, it pipes the output of cat data.txt as input to the next command, strings.
-strings: The strings command is used to extract human-readable text from binary files or data. It scans the input data for sequences of printable characters and displays them.
-| (pipe): Another pipe is used to redirect the output from strings to the next command, grep ^=.
-grep ^=: The grep command is used to search for patterns in text. In this command, it searches for lines that start with the = character.
+- cat data.txt: The cat command is used to concatenate and display the contents of the file named data.txt. It reads the content of the file and sends it to the standard output (usually your terminal).
+- | (pipe): The pipe symbol | is used to redirect the standard output (stdout) of the command on its left to the standard input (stdin) of the command on its right. In this case, it pipes the output of cat data.txt as input to the next command, strings.
+- strings: The strings command is used to extract human-readable text from binary files or data. It scans the input data for sequences of printable characters and displays them.
+- | (pipe): Another pipe is used to redirect the output from strings to the next command, grep ^=.
+- grep ^=: The grep command is used to search for patterns in text. In this command, it searches for lines that start with the = character.
 
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/591754a7-3d57-4134-85e4-d194f0ee858b)
 
@@ -129,9 +130,9 @@ grep ^=: The grep command is used to search for patterns in text. In this comman
 The password for the next level is stored in the file data.txt, which contains base64 encoded data.
 Base64 encoding is a method of encoding binary data, such as files or non-text data, into a text-based format. It is commonly used in computing and data transmission to represent binary data as ASCII text, making it easier to store, transfer, and display data in systems that expect text.
 Key features of Base64 encoding include:
-•	Character Set: Base64 encoding typically uses the characters A-Z, a-z, 0-9, along with two additional characters (usually '+ and '/), which are used to represent the 64 possible values (hence "Base64").
-•	Padding: Base64-encoded data may have padding characters, typically '=' at the end of the encoded data, to ensure that the length of the encoded data is a multiple of 4. This padding helps align the data for proper decoding.
-•	URL-safe Base64: To accommodate URL parameters and avoid potential encoding conflicts, URL-safe Base64 replaces '+' with '-' and '/' with '_'.
+- 	Character Set: Base64 encoding typically uses the characters A-Z, a-z, 0-9, along with two additional characters (usually '+ and '/), which are used to represent the 64 possible values (hence "Base64").
+- 	Padding: Base64-encoded data may have padding characters, typically '=' at the end of the encoded data, to ensure that the length of the encoded data is a multiple of 4. This padding helps align the data for proper decoding.
+- 	URL-safe Base64: To accommodate URL parameters and avoid potential encoding conflicts, URL-safe Base64 replaces '+' with '-' and '/' with '_'.
 
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/9b562209-7101-4e7c-8832-d3226a366bb5)
 
@@ -170,9 +171,9 @@ The next step is to copy the sshkey.private file from the remote server (Bandit 
 
 After copying the sshkey.private file, you change the permissions of the file to make it readable only by you. This is done to protect the private key from unauthorized access. The chmod command is used, 400 sets the permissions so that the file is readable by the owner and not accessible by others.
 
--i sshkey.private: Specifies the private key to use for authentication.
+- -i sshkey.private: Specifies the private key to use for authentication.
 bandit14@bandit.labs.overthewire.org: The username and hostname for Level 14.
--p 2220: Specifies the port to connect to.
+- -p 2220: Specifies the port to connect to.
 
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/af2dc692-d299-40f4-bf88-18f65efa50c2)
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/53182f9f-9107-4069-8b4a-f4d435b2f6d4)
@@ -194,10 +195,10 @@ SSL (Secure Sockets Layer) encryption is a cryptographic protocol that is used t
 
 When you run this command, OpenSSL's s_client utility initiates an SSL/TLS handshake with the server running on localhost at port 30001. It performs the following actions:
 
-•	It starts the SSL/TLS handshake by sending a ClientHello message to the server.
-•	It checks the server's SSL/TLS certificate (if available) and verifies its authenticity. If the server does not have a certificate or if it's self-signed, you might see a warning.
-•	It completes the SSL/TLS handshake and establishes an encrypted connection.
-•	You can then interact with the server over this encrypted connection. Any data you send or receive will be encrypted and secured.
+- 	It starts the SSL/TLS handshake by sending a ClientHello message to the server.
+- 	It checks the server's SSL/TLS certificate (if available) and verifies its authenticity. If the server does not have a certificate or if it's self-signed, you might see a warning.
+-  t completes the SSL/TLS handshake and establishes an encrypted connection.
+- 	You can then interact with the server over this encrypted connection. Any data you send or receive will be encrypted and secured.
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/13f83603-6482-4069-91b9-1a34cafedf22)
 
 
@@ -205,17 +206,18 @@ When you run this command, OpenSSL's s_client utility initiates an SSL/TLS hands
 
  
 Submitting the previous password gives us the next: 
+
 ![image](https://github.com/KarsCode/OverTheWire-Bandit-Writeups/assets/117924364/ca66404f-77c2-453a-b7dd-578719dbbca2)
 
  
 ## Level 17
 
 The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t.
-nmap: This is the command to invoke Nmap.
--sV: This option tells Nmap to perform service version detection. In other words, it will attempt to identify the services running on the open ports by analyzing their responses. This can help in determining which specific software or application is running on each port.
--T4: This option sets the timing template to "aggressive" (T4). It controls the speed at which Nmap performs the scan. T4 is faster than the default timing template, but it can be more aggressive and may consume more resources. This option is suitable for relatively stable and responsive networks.
--p 31000-32000: This option specifies the range of ports to scan. Nmap will scan all ports within the range of 31000 to 32000. This is useful for discovering open ports on a target system.
-localhost: This is the target host you want to scan. In this case, "localhost" refers to the local machine, so Nmap will perform a scan on ports in the specified range on your own machine.
+- nmap: This is the command to invoke Nmap.
+- -sV: This option tells Nmap to perform service version detection. In other words, it will attempt to identify the services running on the open ports by analyzing their responses. This can help in determining which specific software or application is running on each port.
+- -T4: This option sets the timing template to "aggressive" (T4). It controls the speed at which Nmap performs the scan. T4 is faster than the default timing template, but it can be more aggressive and may consume more resources. This option is suitable for relatively stable and responsive networks.
+- -p 31000-32000: This option specifies the range of ports to scan. Nmap will scan all ports within the range of 31000 to 32000. This is useful for discovering open ports on a target system.
+- localhost: This is the target host you want to scan. In this case, "localhost" refers to the local machine, so Nmap will perform a scan on ports in the specified range on your own machine.
 
 After connecting to the 31790 port with "openssl s_client -connect localhost:31790" and entering the password for bandit16 one obtains a private RSA key which can be used to ssh into the next level !
 
